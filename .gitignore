@@ -124,3 +124,6 @@ cython_debug/
 
 # VS code
 .vscode
+
+# slack stuff
+.slack
