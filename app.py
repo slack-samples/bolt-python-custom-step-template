@@ -48,7 +48,7 @@ def handle_sample_click(
             text="Congrats! You clicked the button",
         )
 
-        # Tell the automation platform that this remote function completed
+        # Signal that the function completed successfully
         complete({"user_id": context.actor_user_id})
     except Exception as e:
         logger.exception(e)
