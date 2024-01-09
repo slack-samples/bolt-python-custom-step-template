@@ -9,18 +9,17 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 @app.function("sample_function")
-def handle_sample_function_event(ack: Ack, inputs: dict, say: Say, fail: Fail, logger: logging.Logger):
-    ack()
+def handle_sample_function_event(inputs: dict, say: Say, fail: Fail, logger: logging.Logger):
     user_id = inputs["user_id"]
 
     try:
         say(
             channel=user_id,  # sending a DM to this user
-            text="Click this! Let's go!",
+            text="Click button to complete function!",
             blocks=[
                 {
                     "type": "section",
-                    "text": {"type": "mrkdwn", "text": "Click this!"},
+                    "text": {"type": "mrkdwn", "text": "Click button to complete function!"},
                     "accessory": {
                         "type": "button",
                         "text": {"type": "plain_text", "text": "Click me!"},

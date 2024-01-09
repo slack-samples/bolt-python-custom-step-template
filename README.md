@@ -6,7 +6,7 @@ Before getting started, make sure you have a development workspace where you hav
 
 ## Installation
 
-### Create a Slack App
+#### Create a Slack App
 
 1. Open [https://api.slack.com/apps/new](https://api.slack.com/apps/new) and choose "From an app manifest"
 2. Choose the workspace you want to install the application to
@@ -14,7 +14,7 @@ Before getting started, make sure you have a development workspace where you hav
 4. Review the configuration and click *Create*
 5. Click *Install to Workspace* and *Allow* on the screen that follows. You'll then be redirected to the App Configuration dashboard.
 
-### Environment Variables
+#### Environment Variables
 
 Before you can run the app, you'll need to store some environment variables.
 
