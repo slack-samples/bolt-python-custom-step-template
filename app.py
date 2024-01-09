@@ -15,7 +15,7 @@ def handle_sample_function_event(ack: Ack, inputs: dict, say: Say, fail: Fail, l
 
     try:
         say(
-            channel=user_id,  # sending a DM to this user
+            channel=user_id,  # send a DM to user
             text="Click this! Let's go!",
             blocks=[
                 {
