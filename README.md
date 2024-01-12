@@ -1,63 +1,81 @@
-# Bolt for Python Automation Template App
+# Bolt for Python Custom Function Template
 
-This is a generic Bolt for Python template app used to build out Slack automations.
+This is a Bolt for Python template app used to build custom functions in [Workflow Builder](https://api.slack.com/start#workflow-builder).
 
-Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).
+## Setup
 
-## Installation
+Before getting started, first make sure you have a development workspace where
+you have permission to install apps. **Please note that the features in this
+project require that the workspace be part of
+[a Slack paid plan](https://slack.com/pricing).**
 
-#### Create a Slack App
+### Install the Slack CLI
 
-1. Open [https://api.slack.com/apps/new](https://api.slack.com/apps/new) and choose "From an app manifest"
-2. Choose the workspace you want to install the application to
-3. Copy the contents of [manifest.json](./manifest.json) into the text box that says `*Paste your manifest code here*` (within the JSON tab) and click *Next*
-4. Review the configuration and click *Create*
-5. Click *Install to Workspace* and *Allow* on the screen that follows. You'll then be redirected to the App Configuration dashboard.
+To use this template, you need to install and configure the Slack CLI.
+Step-by-step instructions can be found in our
+[Quickstart Guide](https://api.slack.com/automation/quickstart).
 
-#### Environment Variables
+### Clone the Template
 
-Before you can run the app, you'll need to store some environment variables.
-
-1. Rename `.env.sample` to `.env`
-2. Open your apps configuration page from [this list](https://api.slack.com/apps), click *OAuth & Permissions* in the left hand menu, then copy the *Bot User OAuth Token* into your `.env` file under `SLACK_BOT_TOKEN`
-3. Click *Basic Information* from the left hand menu and follow the steps in the *App-Level Tokens* section to create an app-level token with the `connections:write` scope. Copy that token into your `.env` as `SLACK_APP_TOKEN`.
-
-### Setup Your Local Project
+Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-python-automation-template.git
+$ slack create my-app -t slack-samples/bolt-python-automation-template
 
-# Change into this project directory
-cd bolt-python-automation-template
-
-# Set up virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+# Change into the project directory
+$ cd my-app
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Run Bolt server
-slack run
 ```
 
-#### Linting
+## Running Your Project Locally
+
+While building your app, you can see your changes appear in your workspace in
+real-time with `slack run`. You'll know an app is the development version if the
+name has the string `(local)` appended.
 
 ```zsh
-# Run flake8 from root directory for linting
+# Run app locally
+$ slack run
+
+⚡️ Bolt app is running! ⚡️
+```
+
+To stop running locally, press `<CTRL> + C` to end the process.
+
+### Linting
+Run flake8 and black for linting and code formatting:
+
+```zsh
+# Run flake8 from root directory (linting)
 flake8 *.py
 
-# Run black from root directory for code formatting
+# Run black from root directory (code formatting)
 black .
 ```
 
+## Using Functions in Workflow Builder
+With your server running, your function is now ready for use in [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a custom step in a new or existing workflow, then run the workflow while your app is running.
+
+For more information on creating workflows and adding custom steps, read more [here](https://slack.com/help/articles/17542172840595-Create-a-new-workflow-in-Slack).
+
 ## Project Structure
+
+### `.slack/`
+
+Contains `apps.dev.json` and `config.json`, which include installation details for your project.
+
+### `app.py`
+
+`app.py` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
 
 ### `manifest.json`
 
 `manifest.json` is a configuration for Slack apps. With a manifest, you can create an app with a pre-defined configuration, or adjust the configuration of an existing app.
 
-### `app.py`
+### `slack.json`
 
-`app.py` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
+Used by the Slack CLI to interact with the project's SDK dependencies. It contains
+script hooks that are executed by the CLI and implemented by `slack_cli_hooks`.
