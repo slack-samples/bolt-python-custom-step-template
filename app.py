@@ -1,6 +1,7 @@
-import os
 import logging
-from slack_bolt import Ack, App, BoltContext, Say, Complete, Fail
+import os
+
+from slack_bolt import Ack, App, BoltContext, Complete, Fail, Say
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 
