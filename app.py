@@ -16,14 +16,14 @@ def handle_sample_function_event(inputs: dict, say: Say, fail: Fail, logger: log
     try:
         say(
             channel=user_id,  # sending a DM to this user
-            text="Click button to complete function!",
+            text="Click the button to signal the function has completed",
             blocks=[
                 {
                     "type": "section",
-                    "text": {"type": "mrkdwn", "text": "Click button to complete function!"},
+                    "text": {"type": "mrkdwn", "text": "Click the button to signal the function has completed"},
                     "accessory": {
                         "type": "button",
-                        "text": {"type": "plain_text", "text": "Click me!"},
+                        "text": {"type": "plain_text", "text": "Complete function"},
                         "action_id": "sample_click",
                     },
                 }
