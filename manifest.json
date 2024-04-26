@@ -2,7 +2,6 @@
   "display_information": {
     "name": "BoltPy Automation Template"
   },
-  "outgoing_domains": [],
   "settings": {
     "org_deploy_enabled": true,
     "socket_mode_enabled": true
