@@ -21,7 +21,7 @@ Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack create my-app -t slack-samples/bolt-python-automation-template
+$ slack create my-app -t slack-samples/bolt-python-custom-function-template
 
 # Change into the project directory
 $ cd my-app
