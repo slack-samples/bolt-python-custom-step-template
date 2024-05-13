@@ -21,13 +21,13 @@ Start by cloning this repository:
 
 ```zsh
 # Clone this project onto your machine
-$ slack create my-app -t slack-samples/bolt-python-automation-template
+$ slack create my-app -t slack-samples/bolt-python-custom-function-template
 
 # Change into the project directory
 $ cd my-app
 
 # Install dependencies
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Running Your Project Locally
@@ -50,10 +50,10 @@ Run flake8 and black for linting and code formatting:
 
 ```zsh
 # Run flake8 from root directory (linting)
-flake8 *.py
+$ flake8 *.py
 
 # Run black from root directory (code formatting)
-black .
+$ black .
 ```
 
 ## Using Functions in Workflow Builder
