@@ -36,3 +36,6 @@ tmp.txt
 logs/
 *.db
 .pytype/
+
+# development apps
+.slack/apps.dev.json
