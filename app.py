@@ -36,20 +36,14 @@ def handle_sample_function_event(inputs: dict, say: Say, fail: Fail, logger: log
 
 @app.action("sample_click")
 def handle_sample_click(
-    ack: Ack,
-    body: dict,
-    client: WebClient,
-    complete: Complete,
-    context: BoltContext,
-    fail: Fail,
-    logger: logging.Logger,
+    ack: Ack, body: dict, context: BoltContext, client: WebClient, complete: Complete, fail: Fail, logger: logging.Logger
 ):
     ack()
 
     try:
         # Since the button no longer works, we should remove it
         client.chat_update(
-            channel=body["channel"]["id"],
+            channel=context.channel_id,
             ts=body["message"]["ts"],
             text="Congrats! You clicked the button",
         )
