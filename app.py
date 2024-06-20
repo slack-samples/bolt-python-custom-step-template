@@ -5,8 +5,10 @@ from slack_bolt import Ack, App, BoltContext, Complete, Fail, Say
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 
-app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 logging.basicConfig(level=logging.DEBUG)
+logging.getLogger("fsevents").setLevel(logging.INFO)
+
+app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 
 @app.function("sample_function")
