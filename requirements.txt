@@ -1,6 +1,6 @@
-slack-cli-hooks==0.0.2
-slack-bolt==1.19.0rc1
-reloadium==1.5.1
-pytest==8.2.2
-flake8==7.0.0
 black==24.4.2
+flake8==7.0.0
+jurigged==0.5.8
+pytest==8.2.2
+slack-bolt==1.19.0rc1
+slack-cli-hooks==0.0.2
