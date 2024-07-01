@@ -1,5 +1,5 @@
 slack-cli-hooks
-slack-bolt==1.19.0rc1
+slack-bolt==1.19.0
 pytest
 flake8==7.0.0
 black==24.4.2
