@@ -27,7 +27,7 @@
         "user_id": {
           "type": "slack#/types/user_id",
           "title": "User",
-          "description": "Send this to who?",
+          "description": "Message recipient",
           "is_required": true,
           "hint": "Select a user in the workspace",
           "name": "user_id"
@@ -37,7 +37,7 @@
         "user_id": {
           "type": "slack#/types/user_id",
           "title": "User",
-          "description": "User to used the function",
+          "description": "User that completed the function",
           "is_required": true,
           "name": "user_id"
         }
