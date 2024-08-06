@@ -3,6 +3,9 @@
     "name": "BoltPy Automation Template"
   },
   "settings": {
+    "event_subscriptions": {
+      "bot_events": ["function_executed"]
+    },
     "org_deploy_enabled": true,
     "socket_mode_enabled": true,
     "function_runtime": "remote"
