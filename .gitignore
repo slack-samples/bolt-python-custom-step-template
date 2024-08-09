@@ -22,13 +22,14 @@ venv/
 cov_*
 coverage.xml
 
-# due to using tox and pytest
+# due to using pytest, tox or ruff
 .tox
 .cache
 .pytest_cache/
 .python-version
 pip
 .mypy_cache/
+.ruff_cache
 
 # misc
 tmp.txt
@@ -36,3 +37,4 @@ tmp.txt
 logs/
 *.db
 .pytype/
+
