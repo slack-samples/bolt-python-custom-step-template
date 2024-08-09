@@ -1,7 +1,18 @@
-# black project prefers pyproject.toml
-# that's why we have this file in addition to other setting files
-[tool.black]
+[tool.ruff]
 line-length = 125
+
+[tool.ruff.lint]
+ignore = []
+select = [
+	# pycodestyle error
+	"E",
+	# pycodestyle warning
+	"W",
+	# Pyflakes
+	"F",
+	# isort
+	"I",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
