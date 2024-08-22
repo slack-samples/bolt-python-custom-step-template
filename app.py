@@ -16,11 +16,11 @@ def handle_sample_step_event(inputs: dict, say: Say, fail: Fail, logger: logging
     try:
         say(
             channel=user_id,  # sending a DM to this user
-            text="Click the button to signal the step has ended",
+            text="Click the button to signal the step has completed",
             blocks=[
                 {
                     "type": "section",
-                    "text": {"type": "mrkdwn", "text": "Click the button to signal the step has ended"},
+                    "text": {"type": "mrkdwn", "text": "Click the button to signal the step has completed"},
                     "accessory": {
                         "type": "button",
                         "text": {"type": "plain_text", "text": "Complete step"},
@@ -31,7 +31,7 @@ def handle_sample_step_event(inputs: dict, say: Say, fail: Fail, logger: logging
         )
     except Exception as e:
         logger.exception(e)
-        fail(f"Failed to handle a step request (error: {e})")
+        fail(f"Failed to complete the step: {e}")
 
 
 @app.action("sample_click")
@@ -41,18 +41,18 @@ def handle_sample_click(
     ack()
 
     try:
+        # Signal that the step completed successfully
+        complete({"user_id": context.actor_user_id})
+
         # Since the button no longer works, we should remove it
         client.chat_update(
             channel=context.channel_id,
             ts=body["message"]["ts"],
-            text="Congrats! You clicked the button",
+            text="Step completed successfully!",
         )
-
-        # Signal that the step completed successfully
-        complete({"user_id": context.actor_user_id})
     except Exception as e:
         logger.exception(e)
-        fail(f"Failed to handle a step request (error: {e})")
+        fail(f"Failed to complete the step: {e}")
 
 
 if __name__ == "__main__":

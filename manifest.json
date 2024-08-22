@@ -1,6 +1,6 @@
 {
   "display_information": {
-    "name": "BoltPy Automation Template"
+    "name": "Bolt Custom Step"
   },
   "settings": {
     "event_subscriptions": {
@@ -14,7 +14,7 @@
   },
   "features": {
     "bot_user": {
-      "display_name": "BoltPy Automation Template"
+      "display_name": "Bolt Custom Step"
     },
     "app_home": {
       "messages_tab_enabled": true

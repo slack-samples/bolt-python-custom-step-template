@@ -51,10 +51,10 @@ export SLACK_APP_TOKEN=<your-app-token>
 
 ```zsh
 # Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-python-custom-function-template.git
+git clone https://github.com/slack-samples/bolt-python-custom-step-template.git
 
 # Change into this project directory
-cd bolt-python-custom-function-template
+cd bolt-python-custom-step-template
 
 # Setup your python virtual environment
 python3 -m venv .venv
