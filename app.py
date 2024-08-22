@@ -9,21 +9,21 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 logging.basicConfig(level=logging.DEBUG)
 
 
-@app.function("sample_function")
-def handle_sample_function_event(inputs: dict, say: Say, fail: Fail, logger: logging.Logger):
+@app.function("sample_step")
+def handle_sample_step_event(inputs: dict, say: Say, fail: Fail, logger: logging.Logger):
     user_id = inputs["user_id"]
 
     try:
         say(
             channel=user_id,  # sending a DM to this user
-            text="Click the button to signal the function has completed",
+            text="Click the button to signal the step has ended",
             blocks=[
                 {
                     "type": "section",
-                    "text": {"type": "mrkdwn", "text": "Click the button to signal the function has completed"},
+                    "text": {"type": "mrkdwn", "text": "Click the button to signal the step has ended"},
                     "accessory": {
                         "type": "button",
-                        "text": {"type": "plain_text", "text": "Complete function"},
+                        "text": {"type": "plain_text", "text": "Complete step"},
                         "action_id": "sample_click",
                     },
                 }
@@ -31,7 +31,7 @@ def handle_sample_function_event(inputs: dict, say: Say, fail: Fail, logger: log
         )
     except Exception as e:
         logger.exception(e)
-        fail(f"Failed to handle a function request (error: {e})")
+        fail(f"Failed to handle a step request (error: {e})")
 
 
 @app.action("sample_click")
@@ -48,11 +48,11 @@ def handle_sample_click(
             text="Congrats! You clicked the button",
         )
 
-        # Signal that the function completed successfully
+        # Signal that the step completed successfully
         complete({"user_id": context.actor_user_id})
     except Exception as e:
         logger.exception(e)
-        fail(f"Failed to handle a function request (error: {e})")
+        fail(f"Failed to handle a step request (error: {e})")
 
 
 if __name__ == "__main__":

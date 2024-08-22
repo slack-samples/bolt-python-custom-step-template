@@ -13,7 +13,7 @@ with patch.object(request, "urlopen") as mock_urlopen:
     from slack_bolt import BoltContext
     from slack_sdk import WebClient
 
-    from app import handle_sample_click, handle_sample_function_event
+    from app import handle_sample_click, handle_sample_step_event
 
 restore_os_env(old_env)
 
@@ -26,12 +26,12 @@ class TestApp:
     def teardown_method(self):
         restore_os_env(self.old_os_env)
 
-    def test_handle_sample_function_event(self):
+    def test_handle_sample_step_event(self):
         fake_inputs = {"user_id": "U1234"}
         fake_say = MagicMock()
         fake_fail = MagicMock()
 
-        handle_sample_function_event(
+        handle_sample_step_event(
             inputs=fake_inputs, say=fake_say, fail=fake_fail, logger=logging.Logger("tests/test_app.py")
         )
 

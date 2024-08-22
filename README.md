@@ -1,6 +1,6 @@
-# Bolt for Python Custom Function Template
+# Bolt for Python Custom Step Template
 
-This is a Bolt for Python template app used to build custom functions for use in
+This is a Bolt for Python template app used to build custom steps for use in
 [Workflow Builder](https://api.slack.com/start#workflow-builder).
 
 ## Setup
@@ -82,7 +82,7 @@ ruff check --fix
 
 ## Using Steps in Workflow Builder
 
-With your server running, your function is now ready for use in
+With your server running, your step is now ready for use in
 [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a
 custom step in a new or existing workflow, then run the workflow while your app
 is running.
