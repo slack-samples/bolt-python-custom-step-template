@@ -2,22 +2,15 @@
   "display_information": {
     "name": "Bolt Custom Step"
   },
-  "settings": {
-    "event_subscriptions": {
-      "bot_events": [
-        "function_executed"
-      ]
-    },
-    "org_deploy_enabled": true,
-    "socket_mode_enabled": true,
-    "function_runtime": "remote"
-  },
   "features": {
-    "bot_user": {
-      "display_name": "Bolt Custom Step"
-    },
     "app_home": {
-      "messages_tab_enabled": true
+      "home_tab_enabled": false,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": true
+    },
+    "bot_user": {
+      "display_name": "Bolt Custom Step",
+      "always_online": true
     }
   },
   "oauth_config": {
@@ -27,7 +20,36 @@
       ]
     }
   },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "function_executed"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": true,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false,
+    "hermes_app_type": "remote",
+    "function_runtime": "remote"
+  },
   "functions": {
+    "button_behavior_options": {
+      "title": "Button behavior options",
+      "description": "Get the button behavior options",
+      "input_parameters": {},
+      "output_parameters": {
+        "options": {
+          "type": "slack#/types/options_select",
+          "title": "Options",
+          "description": "The available button behavior options for the app ",
+          "is_required": true,
+          "name": "options"
+        }
+      }
+    },
     "sample_step": {
       "title": "Sample step",
       "description": "Runs sample step",
@@ -39,6 +61,18 @@
           "is_required": true,
           "hint": "Select a user in the workspace",
           "name": "user_id"
+        },
+        "button_behavior": {
+          "type": "string",
+          "title": "Button behavior",
+          "description": "Message recipient",
+          "is_required": true,
+          "hint": "Select a user in the workspace",
+          "name": "button_behavior",
+          "dynamic_options": {
+            "function": "#/functions/button_behavior_options",
+            "inputs": {}
+          }
         }
       },
       "output_parameters": {
