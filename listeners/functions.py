@@ -12,7 +12,7 @@ button_behaviors = [
 ]
 
 
-def handle_button_behavior_options(ack: Ack, complete: Complete):
+def handle_behavior_options(ack: Ack, complete: Complete):
     try:
         complete(
             outputs={

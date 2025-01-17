@@ -10,37 +10,53 @@ test_logger = logging.getLogger(__name__)
 
 
 class TestHandleSampleClick:
+    def setup_method(self):
+        self.fake_ack = Mock(Ack)
+        self.fake_body = {"message": {"ts": "12345"}}
+        self.fake_fail = Mock(Fail)
+        self.fake_complete = Mock(Complete)
+
+        self.fake_context = BoltContext()
+        self.fake_context["channel_id"] = "C1A2B3C"
+        self.fake_context["actor_user_id"] = "U1234"
+
+        self.fake_client = Mock(WebClient)
+        self.fake_client.chat_update = Mock()
+
     def test_handle_sample_click(self):
-        fake_ack = Mock(Ack)
-        fake_body = {"message": {"ts": "12345"}}
-        fake_fail = Mock(Fail)
-        fake_complete = Mock(Complete)
-
-        fake_context = BoltContext()
-        fake_context["channel_id"] = "C1A2B3C"
-        fake_context["actor_user_id"] = "U1234"
-
-        fake_client = Mock(WebClient)
-        fake_client.chat_update = Mock()
-
         actions.handle_sample_click(
-            ack=fake_ack,
-            body=fake_body,
-            context=fake_context,
-            client=fake_client,
-            complete=fake_complete,
-            fail=fake_fail,
+            ack=self.fake_ack,
+            body=self.fake_body,
+            context=self.fake_context,
+            client=self.fake_client,
+            complete=self.fake_complete,
+            fail=self.fake_fail,
             logger=test_logger,
         )
 
-        fake_ack.assert_called_once()
-        fake_fail.assert_not_called()
+        self.fake_ack.assert_called_once()
+        self.fake_fail.assert_not_called()
 
-        fake_client.chat_update.assert_called_once()
-        _, kwargs = fake_client.chat_update.call_args
-        assert kwargs["channel"] == fake_context.channel_id
-        assert kwargs["ts"] == fake_body["message"]["ts"]
+        self.fake_client.chat_update.assert_called_once()
+        kwargs = self.fake_client.chat_update.call_args.kwargs
+        assert kwargs["channel"] == self.fake_context.channel_id
+        assert kwargs["ts"] == self.fake_body["message"]["ts"]
 
-        fake_complete.assert_called_once()
-        _, kwargs = fake_complete.call_args
-        assert kwargs["outputs"] == {"user_id": fake_context.actor_user_id}
+        self.fake_complete.assert_called_once()
+        kwargs = self.fake_complete.call_args.kwargs
+        assert kwargs["outputs"] == {"user_id": self.fake_context.actor_user_id}
+
+    def test_handle_sample_click_fail(self):
+        self.fake_complete.side_effect = Exception("test exception")
+        actions.handle_sample_click(
+            ack=self.fake_ack,
+            body=self.fake_body,
+            context=self.fake_context,
+            client=self.fake_client,
+            complete=self.fake_complete,
+            fail=self.fake_fail,
+            logger=test_logger,
+        )
+
+        self.fake_ack.assert_called_once()
+        self.fake_fail.assert_called_once()

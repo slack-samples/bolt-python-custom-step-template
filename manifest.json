@@ -36,8 +36,8 @@
     "function_runtime": "remote"
   },
   "functions": {
-    "button_behavior_options": {
-      "title": "Button behavior options",
+    "behavior_options": {
+      "title": "Behavior options",
       "description": "Get the button behavior options",
       "input_parameters": {},
       "output_parameters": {
@@ -70,7 +70,7 @@
           "hint": "Select a user in the workspace",
           "name": "button_behavior",
           "dynamic_options": {
-            "function": "#/functions/button_behavior_options",
+            "function": "#/functions/behavior_options",
             "inputs": {}
           }
         }
