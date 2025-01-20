@@ -33,10 +33,10 @@ tooling, and resources created to help developers build and grow.
 
 Before you can run the app, you'll need to store some environment variables.
 
-1. Open your apps setting page from this list, click **OAuth &
-   Permissions** in the left hand menu, then copy the Bot User OAuth Token. You
-   will store this in your environment as `SLACK_BOT_TOKEN`.
-2. Click ***Basic Information** from the left hand menu and follow the steps in
+1. Open your apps setting page from this list, click **OAuth & Permissions** in
+   the left hand menu, then copy the Bot User OAuth Token. You will store this
+   in your environment as `SLACK_BOT_TOKEN`.
+2. Click **Basic Information** from the left hand menu and follow the steps in
    the App-Level Tokens section to create an app-level token with the
    `connections:write` scope. Copy this token. You will store this in your
    environment as `SLACK_APP_TOKEN`.
@@ -82,7 +82,7 @@ ruff check --fix
 
 ## Using Steps in Workflow Builder
 
-With your server running, your step is now ready for use in
+With your server running, the `Sample step` is now ready for use in
 [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a
 custom step in a new or existing workflow, then run the workflow while your app
 is running.
@@ -103,3 +103,13 @@ primarily using it as a way to route inbound requests.
 `manifest.json` is a configuration for Slack apps. With a manifest, you can
 create an app with a pre-defined configuration, or adjust the configuration of
 an existing app.
+
+### `/listeners`
+
+Every incoming request is routed to a "listener". Inside this directory, we
+group each listener based on the Slack Platform feature used, so
+`/listeners/actions.py` handles incoming
+[Actions](https://api.slack.com/reference/interaction-payloads/block-actions)
+requests, `/listeners/functions.py` handles
+[Custom Steps](https://api.slack.com/automation/functions/custom-bolt) and so
+on.
