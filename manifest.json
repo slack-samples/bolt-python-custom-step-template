@@ -65,9 +65,9 @@
         "button_behavior": {
           "type": "string",
           "title": "Button behavior",
-          "description": "Message recipient",
+          "description": "Action of the button",
           "is_required": true,
-          "hint": "Select a user in the workspace",
+          "hint": "Decide the message sent with the button",
           "name": "button_behavior",
           "dynamic_options": {
             "function": "#/functions/behavior_options",
