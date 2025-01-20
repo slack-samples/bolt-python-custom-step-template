@@ -44,7 +44,7 @@
         "options": {
           "type": "slack#/types/options_select",
           "title": "Options",
-          "description": "The available button behavior options for the app ",
+          "description": "The available button behavior options for the app",
           "is_required": true,
           "name": "options"
         }
