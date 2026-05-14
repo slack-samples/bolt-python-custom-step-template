@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install -r requirements.txt
+          pip install ".[dev]"
       - name: Run all tests
         run: |
           pytest .

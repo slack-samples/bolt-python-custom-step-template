@@ -83,9 +83,19 @@ export SLACK_APP_TOKEN=<your-app-token>
 
 #### Initializing the project
 
+**Using Slack CLI:**
+
+```sh
+slack create my-bolt-python-custom-step --template slack-samples/bolt-python-custom-step-template
+cd my-bolt-python-custom-step
+```
+
+**Using git:**
+
 ```sh
 git clone https://github.com/slack-samples/bolt-python-custom-step-template.git my-bolt-python-custom-step
 cd my-bolt-python-custom-step
+slack init
 ```
 
 #### Setup your python virtual environment
@@ -98,7 +108,7 @@ source .venv/bin/activate  # for Windows OS, .\.venv\Scripts\Activate instead sh
 #### Install dependencies
 
 ```sh
-pip3 install -r requirements.txt
+pip3 install ".[dev]"
 ```
 
 </details>
