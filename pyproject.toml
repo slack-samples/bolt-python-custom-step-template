@@ -3,13 +3,13 @@ name = "bolt-python-custom-step-template"
 version = "0.1.0"
 dependencies = [
     "slack-bolt==1.28.0",
-    "slack-cli-hooks<1.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest==9.0.3",
     "ruff==0.15.12",
+    "slack-cli-hooks<1.0.0",
 ]
 
 [tool.ruff]
