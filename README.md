@@ -95,7 +95,6 @@ cd my-bolt-python-custom-step
 ```sh
 git clone https://github.com/slack-samples/bolt-python-custom-step-template.git my-bolt-python-custom-step
 cd my-bolt-python-custom-step
-slack init
 ```
 
 #### Setup your python virtual environment
