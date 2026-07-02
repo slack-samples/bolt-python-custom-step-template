@@ -18,7 +18,41 @@ tooling, and resources created to help developers build and grow.
 
 ## Installation
 
-### Create a Slack App
+<details><summary><strong>Using Slack CLI</strong></summary>
+
+Install the latest version of the Slack CLI for your operating system:
+
+- [Slack CLI for macOS & Linux](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/)
+- [Slack CLI for Windows](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/)
+
+You'll also need to log in if this is your first time using the Slack CLI.
+
+```sh
+slack login
+```
+
+#### Initializing the project
+
+```sh
+slack create my-bolt-python-custom-step --template slack-samples/bolt-python-custom-step-template
+cd my-bolt-python-custom-step
+```
+
+#### Creating the Slack app
+
+Use the following command to add your new Slack app to your development workspace. Choose a "local" app environment for upcoming development:
+
+```sh
+slack install
+```
+
+After the Slack app has been created you're all set to start developing!
+
+</details>
+
+<details><summary><strong>Using Terminal</strong></summary>
+
+#### Create Your Slack App
 
 1. Open [https://api.slack.com/apps/new](https://api.slack.com/apps/new) and
    choose "From an app manifest"
@@ -29,11 +63,11 @@ tooling, and resources created to help developers build and grow.
 5. Click _Install_ button and _Allow_ on the screen that follows. You'll then be
    redirected to the App Settings dashboard.
 
-### Environment Variables
+#### Environment Variables
 
 Before you can run the app, you'll need to store some environment variables.
 
-1. Open your apps setting page from this list, click **OAuth & Permissions** in
+1. Open your apps setting page from [this list](https://api.slack.com/apps), click **OAuth & Permissions** in
    the left hand menu, then copy the Bot User OAuth Token. You will store this
    in your environment as `SLACK_BOT_TOKEN`.
 2. Click **Basic Information** from the left hand menu and follow the steps in
@@ -47,29 +81,45 @@ export SLACK_BOT_TOKEN=<your-bot-token>
 export SLACK_APP_TOKEN=<your-app-token>
 ```
 
-### Local Project
+#### Initializing the project
 
-```zsh
-# Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-python-custom-step-template.git
+```sh
+git clone https://github.com/slack-samples/bolt-python-custom-step-template.git my-bolt-python-custom-step
+cd my-bolt-python-custom-step
+```
 
-# Change into this project directory
-cd bolt-python-custom-step-template
+#### Setup your python virtual environment
 
-# Setup your python virtual environment
+```sh
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # for Windows OS, .\.venv\Scripts\Activate instead should work
+```
 
-# Install the dependencies
+#### Install dependencies
+
+```sh
 pip3 install -r requirements.txt
+```
 
-# Start your local server
+</details>
+
+## Development
+
+### Starting the app
+
+#### Slack CLI
+
+```sh
+slack run
+```
+
+#### Terminal
+
+```sh
 python3 app.py
 ```
 
 ### Linting
-
-Run flake8 and black for linting and code formatting:
 
 ```zsh
 # Run ruff from root directory for linting
@@ -77,7 +127,6 @@ ruff check
 
 # Run ruff from root directory for code formatting
 ruff format
-ruff check --fix
 ```
 
 ## Using Steps in Workflow Builder
