@@ -18,7 +18,7 @@ tooling, and resources created to help developers build and grow.
 
 ## Installation
 
-<details><summary><strong>Using Slack CLI</strong></summary>
+### Using Slack CLI
 
 Install the latest version of the Slack CLI for your operating system:
 
@@ -34,23 +34,18 @@ slack login
 #### Initializing the project
 
 ```sh
-slack create my-bolt-python-custom-step --template slack-samples/bolt-python-custom-step-template
-cd my-bolt-python-custom-step
+slack create bolt-python-custom-step --template slack-samples/bolt-python-custom-step-template
+cd bolt-python-custom-step
 ```
 
-#### Creating the Slack app
-
-Use the following command to add your new Slack app to your development workspace. Choose a "local" app environment for upcoming development:
+#### Running the app
 
 ```sh
-slack install
+slack run
 ```
 
-After the Slack app has been created you're all set to start developing!
-
-</details>
-
-<details><summary><strong>Using Terminal</strong></summary>
+<details>
+<summary><h3>Using Terminal</h3></summary>
 
 #### Create Your Slack App
 
