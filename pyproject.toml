@@ -1,3 +1,20 @@
+[project]
+name = "bolt-python-custom-step-template"
+version = "0.0.0"
+requires-python = ">=3.10"
+dependencies = [
+    "slack-bolt==1.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "ruff==0.16.9",
+]
+
+[tool.setuptools.packages.find]
+include = ["listeners*"]
+
 [tool.ruff]
 line-length = 125
 

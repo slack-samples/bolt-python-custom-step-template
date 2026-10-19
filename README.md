@@ -98,7 +98,7 @@ source .venv/bin/activate  # for Windows OS, .\.venv\Scripts\Activate instead sh
 #### Install dependencies
 
 ```sh
-pip3 install -r requirements.txt
+pip3 install -e ".[dev]"
 ```
 
 </details>
